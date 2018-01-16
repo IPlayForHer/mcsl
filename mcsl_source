@@ -9,7 +9,7 @@ auto_mcsl ()   #  By convention, the function name
 
   case "$cur" in
     -*)
-    COMPREPLY=( $( compgen -W '-start -stop -restart -list -return' -- $cur ) );;
+    COMPREPLY=( $( compgen -W '-start -stop -restart -list -return -help' -- $cur ) );;
     *)
     source xxx
     COMPREPLY=( $( compgen -W '$(echo `ls $Path`)' -- $cur ) );;
