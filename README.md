@@ -1,0 +1,2 @@
+# mcsl
+Minecraft Server Launcher
