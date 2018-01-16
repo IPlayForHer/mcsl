@@ -1,4 +1,4 @@
-_UseGetOpt-2 ()   #  By convention, the function name
+auto_mcsl ()   #  By convention, the function name
 {                 #+ starts with an underscore.
   local cur
   # Pointer to current completion word.
@@ -12,12 +12,12 @@ _UseGetOpt-2 ()   #  By convention, the function name
     COMPREPLY=( $( compgen -W '-start -stop -restart -list -return' -- $cur ) );;
     *)
     source xxx
-    COMPREPLY=( $( compgen -W '$(echo `ls $Dir`)' -- $cur ) );;
+    COMPREPLY=( $( compgen -W '$(echo `ls $Path`)' -- $cur ) );;
 
   esac
 
   return 0
 }
 
-complete -F _UseGetOpt-2 -o filenames mcsl
+complete -F auto_mcsl -o filenames mcsl
 
