@@ -1,49 +1,47 @@
 #!/bin/bash
 #Author YouTiao
 #Source https://github.com/YouTiao233/mcsl
-
-Dir="/home/carm/KarServer/"
-sh="start.sh"
-start="$Dir$2"
-ProgramName="Minecraft-Server"
+#GPL-3.0
+echo ""
+echo "+--------------------------------------------------+"
+echo "| Manager for Minecraft-Server, Written by YouTiao |"
+echo "+--------------------------------------------------+"
+echo ""
+#config
+source /etc/mcsl.conf
 Server="$2"
 Command="$1"
-
-echo ""
-echo "+--------------------------------------------------+"
-echo "| Manager for ${ProgramName}, Written by YouTiao |"
-echo "+--------------------------------------------------+"
-echo ""
-
+import 
+#DON'T edit the following line of code,unless you know how to edit!
+#Core code 
 case "$1" in
+#START
  -start)
   if [ ! -d $start ]; then
-   echo "ERROR!!! can not find the server dir!"
-    exit
+   echo "ERROR!!! can't not find the server dir!"
   else
    if [ ! -f $start/$sh ]; then
-    echo "ERROR!!! can not find the "$start"!"
-    exit
+    echo "ERROR!!! can't not find the "$start"!"
    else
     bash -c "cd "$start" && bash "$sh
     echo $Server" has start!"
-    exit
    fi
   fi
+ exit
  ;;
+#LIST
  -list)
   echo "Online Servers:"
   screen -ls|grep -v There|grep -v Socket
   exit
  ;;
+#RESTART
  -restart)
   if [ ! -d $start ]; then
-   echo "ERROR!!! can not find the server dir!"
-    exit
+   echo "ERROR!!! can't not find the server dir!"
   else
    if [ ! -f $start/$sh ]; then
-    echo "ERROR!!! can not find the "$start"!"
-    exit
+    echo "ERROR!!! can't not find the "$start"!"
    else
     check=`screen -ls|grep $Server|wc -l` 
     if [ "$check" -gt "0" ]; then
@@ -55,18 +53,25 @@ case "$1" in
   fi
   exit
  ;;
+#STOP
  -stop)
- if [ ! -d $start ]; then
-   echo "ERROR!!! can not find the server!"
-    exit
+  check=`screen -ls|grep $Server|wc -l` 
+  if [ "$check" -gt "0" ]; then
+   screen -S $Server -X quit
+   echo $Server" has stop!"
   else
-   check=`screen -ls|grep $Server|wc -l` 
-   if [ "$check" -gt "0" ]; then
-    screen -S $Server -X quit
-    bash -c "cd "$start" && bash "$sh
-    echo $Server" has stop!"
-   fi
+   echo "ERROR!!! can't not find the server! "
   fi
   exit
  ;;
+#RETURN
+ -return)
+  check=`screen -ls|grep $Server|wc -l` 
+  if [ "$check" -gt "0" ]; then
+   screen -r $Server
+  else
+   echo "ERROR!!! can't not find the server! "
+  fi
+  exit
+ ;
 esac
