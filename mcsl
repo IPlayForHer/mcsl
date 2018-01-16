@@ -3,17 +3,18 @@
 #Source https://github.com/YouTiao233/mcsl
 #GPL-3.0
 echo ""
-echo "+--------------------------------------------------+"
-echo "| Manager for Minecraft-Server, Written by YouTiao |"
-echo "+--------------------------------------------------+"
+echo "+-----------------------------------------------+"
+echo "| Minecraft Server Launcher, Written by YouTiao |"
+echo "+-----------------------------------------------+"
 echo ""
 #config
-source /etc/mcsl.conf
+source xxx
+#DON'T edit the following line of code,unless you know how to edit!
+#Core code 
+start="$Dir$2"
 Server="$2"
 Command="$1"
 import 
-#DON'T edit the following line of code,unless you know how to edit!
-#Core code 
 case "$1" in
 #START
  -start)
