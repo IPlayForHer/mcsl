@@ -12,9 +12,9 @@ source xxx
 #DON'T edit the following line of code,unless you know how to edit!
 #Core code 
 start="$Path$2"
+start2="$Path$1"
 Server="$2"
 Command="$1"
-import 
 case "$1" in
 #START
  -start)
@@ -33,7 +33,12 @@ case "$1" in
 #LIST
  -list|-ls)
   echo "Online Servers:"
-  screen -ls|grep -v There|grep -v Socket
+  screen -ls|grep -v There|grep -v Socket   
+  exit
+ ;;
+#HELP
+ -help|-h)
+  echo "Usage: mcsl [-start|-stop|-restart(-rt)|-stop|-list(-ls)|-help] ServerName"
   exit
  ;;
 #RESTART
@@ -76,3 +81,19 @@ case "$1" in
   exit
  ;
 esac
+if [ ! -n $2 ]; then
+ if [ ! -d $start2 ]; then
+  echo "ERROR!!! can't not find the server dir!"
+ else
+  if [ ! -f $start2/$sh ]; then
+   echo "ERROR!!! can't not find the "$start"!"
+   else
+    bash -c "cd "$start2" && bash "$sh
+    echo $Server" has been started!"
+   fi
+  fi
+ exit
+ else
+ echo "Error!!! Check the Usage![mcsl -help]"
+ exit
+fi
