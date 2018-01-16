@@ -6,5 +6,5 @@ Minecraft Server Launcher
 > `cd mcsl`  
 > `chmod +x setup.sh`  
 > `sudo bash setup.sh`  
-* Alse you can use one key script  
+>* Alse you can use one key script  
 > `git clone https://github.com/YouTiao233/mcsl.git && cd mcsl && chmod +x setup.sh && sudo bash setup.sh`
