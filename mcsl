@@ -1,4 +1,4 @@
-#!/bin/bash
+has been#!/bin/bash
 #Author YouTiao
 #Source https://github.com/YouTiao233/mcsl
 #GPL-3.0
@@ -25,13 +25,13 @@ case "$1" in
     echo "ERROR!!! can't not find the "$start"!"
    else
     bash -c "cd "$start" && bash "$sh
-    echo $Server" has start!"
+    echo $Server" has been started!"
    fi
   fi
  exit
  ;;
 #LIST
- -list)
+ -list|-ls)
   echo "Online Servers:"
   screen -ls|grep -v There|grep -v Socket
   exit
@@ -48,7 +48,7 @@ case "$1" in
     if [ "$check" -gt "0" ]; then
      screen -S $Server -X quit
      bash -c "cd "$start" && bash "$sh
-     echo $Server" has restart!"
+     echo $Server" has been restarted!"
     fi
    fi
   fi
@@ -59,14 +59,14 @@ case "$1" in
   check=`screen -ls|grep $Server|wc -l` 
   if [ "$check" -gt "0" ]; then
    screen -S $Server -X quit
-   echo $Server" has stop!"
+   echo $Server" has been stoped!"
   else
    echo "ERROR!!! can't not find the server! "
   fi
   exit
  ;;
 #RETURN
- -return)
+ -return|-rt)
   check=`screen -ls|grep $Server|wc -l` 
   if [ "$check" -gt "0" ]; then
    screen -r $Server
