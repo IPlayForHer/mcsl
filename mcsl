@@ -11,7 +11,7 @@ echo ""
 source xxx
 #DON'T edit the following line of code,unless you know how to edit!
 #Core code 
-start="$Dir$2"
+start="$Path$2"
 Server="$2"
 Command="$1"
 import 
