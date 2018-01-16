@@ -53,3 +53,11 @@ echo 'sh="'$scriptname'"' >>/etc/mcsl.conf
 sed -e "s/xxx/\/etc\/mcsl.conf/" mcsl_source > $ap/mcsl_source
 sed -e "s/xxx/\/etc\/mcsl.conf/" mcsl > /usr/bin/mcsl
 echo "source "$ap"/mcsl_source" > /etc/bashrc
+echo "-------------------------------------------------------"
+echo "Server path = ${serverpath}"
+echo "Server start script name = ${scriptname}"
+echo "Autocomplete path = ${ap}/mcsl_soure"
+echo "MCSL Config Path = /etc/mcsl.conf"
+echo "MCSL path = /usr/bin/mcsl"
+echo "-------------------------------------------------------"
+echo "Finished! If you see any Error please report on mcbbs or github"
