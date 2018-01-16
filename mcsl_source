@@ -1,0 +1,22 @@
+_UseGetOpt-2 ()   #  By convention, the function name
+{                 #+ starts with an underscore.
+  local cur
+  # Pointer to current completion word.
+  # By convention, it's named "cur" but this isn't strictly necessary.
+
+  COMPREPLY=()   # Array variable storing the possible completions.
+  cur=${COMP_WORDS[COMP_CWORD]}
+
+  case "$cur" in
+    -*)
+    COMPREPLY=( $( compgen -W '-start -stop -restart -list -return' -- $cur ) );;
+    *)
+    COMPREPLY=( $( compgen -W '$(echo `ls /home/carm/KarServer`)' -- $cur ) );;
+
+  esac
+
+  return 0
+}
+
+complete -F _UseGetOpt-2 -o filenames mcsl
+
