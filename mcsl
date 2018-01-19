@@ -79,9 +79,12 @@ case "$1" in
    echo "ERROR!!! can't not find the server! "
   fi
   exit
- ;
+ ;;
 esac
 if [ ! -n $2 ]; then
+ echo "Error!!! Check the Usage![mcsl -help]"
+ exit
+else
  if [ ! -d $start2 ]; then
   echo "ERROR!!! can't not find the server dir!"
  else
@@ -89,11 +92,8 @@ if [ ! -n $2 ]; then
    echo "ERROR!!! can't not find the "$start"!"
    else
     bash -c "cd "$start2" && bash "$sh
-    echo $Server" has been started!"
-   fi
+    echo $1" has been started!"
   fi
- exit
- else
- echo "Error!!! Check the Usage![mcsl -help]"
+ fi
  exit
 fi
